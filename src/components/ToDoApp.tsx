@@ -11,11 +11,12 @@ export const ToDoApp = () => {
         new ToDo(3, "Jobba", 1, true),
     ]);
 
-        /*<!-- value sätter defaultvärde i input rutan i formuläret nedan-->*/
+
+    /*<!-- value sätter defaultvärde i input rutan i formuläret nedan-->*/
     const [todo, setTodo] = useState<ToDo>(new ToDo(0, "", 0, false));
 
 
-        /**hanterar förändringar i inputrutan [e.target.id] kopplas till id i respektive input ruta
+    /**hanterar förändringar i inputrutan [e.target.id] kopplas till id i respektive input ruta
     Koppla sedan på handleChange på alla textrutor*/
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.type==="text"){
@@ -36,6 +37,13 @@ export const ToDoApp = () => {
         setTodo(new ToDo(0, "", 0, false)); //nollställ formuläret efter submit
     };
 
+    //markera todo som klar
+    const toggleTodo = (id: number) => {
+        setTodos(todos.map(todo => 
+            todo.id === id ? {...todo, isDone: !todo.isDone} : todo
+        ));
+    }
+
   return (
     <div>
         <h1>To-Do App</h1>
@@ -46,7 +54,7 @@ export const ToDoApp = () => {
                     <li>
                         Uppgift: {todo.task}
                         Prioritet: {todo.priority}
-                        Markera som klar: <input type="checkbox" checked={todo.isDone} readOnly/>
+                        Markera som klar: <input type="checkbox" checked={todo.isDone} onChange={() => toggleTodo(todo.id)} />
                         Status: {todo.isDone ? "✅" : "❌"}
                     </li>
                 </ul>
