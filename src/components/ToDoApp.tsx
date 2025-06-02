@@ -44,6 +44,13 @@ export const ToDoApp = () => {
         ));
     }
 
+
+        //Ta bort todo
+    const deleteTodo = (id: number) => {
+        setTodos(todos.filter((t) => t.id !== id));
+        console.log("Efter filter ", todos.filter((t) => t.id !== id));
+    }
+
   return (
     <div>
         <h1>To-Do App</h1>
@@ -56,6 +63,7 @@ export const ToDoApp = () => {
                         Prioritet: {todo.priority}
                         Markera som klar: <input type="checkbox" checked={todo.isDone} onChange={() => toggleTodo(todo.id)} />
                         Status: {todo.isDone ? "✅" : "❌"}
+                        <Button onClick={() => deleteTodo(todo.id)}>Radera ToDo</Button>
                     </li>
                 </ul>
             ))}
