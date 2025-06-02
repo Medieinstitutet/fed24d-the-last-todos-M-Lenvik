@@ -6,8 +6,8 @@ Sidan skall visa ett antal punkter som skall göras. Dessa skall då komma upp p
 
 ## Betyg G
 
-- Skapa en hårdkodad lista med punkter att göra (hitta på egna punkter, dessa skall inte bara vara en text)
-- Presentera listan på skärmen, helst med lite kontroll. Detta betyder i en html-struktur t.ex. i en ul/li-lista
+- * Skapa en hårdkodad lista med punkter att göra (hitta på egna punkter, dessa skall inte bara vara en text)
+- * Presentera listan på skärmen, helst med lite kontroll. Detta betyder i en html-struktur t.ex. i en ul/li-lista
 - Implementera klickhändelse för att hantera borttagandet av en todo.
 - Todo markeras som klar på skärmen och markeras som klar i javascript-listan.
 - Ni behöver använda localStorage så att listan inte börjar om från början varje gång sidan används.
