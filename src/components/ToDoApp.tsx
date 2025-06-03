@@ -1,13 +1,17 @@
 //components/ToDoApp.tsx
-
-import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
+import { useEffect, useState } from "react";
+//import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { ToDo } from "../models/ToDo";
-import { Button } from "./Button";
-import { SortMenu } from "./sortMenu";
+//import { Button } from "./Button";
+//import { SortMenu } from "./sortMenu";
+import { ToDoList } from "./ToDoList";
+import { AddToDo } from "./AddToDo";
+
 
 export const ToDoApp = () => {
     const [todos, setTodos] = useState<ToDo[]>(() => {
-        const saved = localStorage.getItem("todos");
+    
+const saved = localStorage.getItem("todos");
     
         if (saved) {
             return JSON.parse(saved).map((t: ToDo) => new ToDo(t.id, t.task, t.priority, t.isDone));
@@ -20,17 +24,43 @@ export const ToDoApp = () => {
         ]);
     });
 
-    /*<!-- value sätter defaultvärde i input rutan i formuläret nedan-->*/
-    const [todo, setTodo] = useState<ToDo>(new ToDo(0, "", 0, false));
-
-
     // Spara todos till localStorage varje gång listan ändras
     useEffect(() => {
         localStorage.setItem("todos", JSON.stringify(todos));
-    }, [todos]);
+    }, [todos]);    
 
+
+//lifting state upp addToDo
+const addToDo = (t: ToDo) => {
+    setTodos([...todos, t]);
+};
+
+    
+/*
+export const ToDoApp = () => {
+    const [todos, setTodos] = useState<ToDo[]>(() => {
+        
+*/
+    /*<!-- value sätter defaultvärde i input rutan i formuläret nedan-->* /
+    //const [todo, setTodo] = useState<ToDo>(new ToDo(0, "", 0, false));
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+/** */
     /**hanterar förändringar i inputrutan [e.target.id] kopplas till id i respektive input ruta
-    Koppla sedan på handleChange på alla textrutor*/
+    Koppla sedan på handleChange på alla textrutor* /
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         if (e.target.type === "text") {
             setTodo({ ...todo, [e.target.id]: e.target.value });
@@ -42,8 +72,14 @@ export const ToDoApp = () => {
             setTodo({ ...todo, [e.target.id]: (e.target as HTMLInputElement).checked });
         }
     }   
+    **/
 
-    const handleSubmit = (e: FormEvent) => {
+
+
+
+    
+    /*
+    const createToDo = (e: FormEvent) => {
         e.preventDefault(); //förhindra att sidan laddas om
         let newId = 1;
         const allIds = todos.map(todo => todo.id);
@@ -58,20 +94,26 @@ export const ToDoApp = () => {
         setTodos([...todos, newTodo]); //lägg till den nya todo i todos arrayen
         setTodo(new ToDo(0, "", 0, false)); //nollställ formuläret efter submit
     };
+*/
 
+/*
     //markera todo som klar
     const toggleTodo = (id: number) => {
         setTodos(todos.map(todo => 
             todo.id === id ? {...todo, isDone: !todo.isDone} : todo
         ));
     }
+*/
 
+/*
     //Ta bort todo
     const deleteTodo = (id: number) => {
         setTodos(todos.filter((t) => t.id !== id));
         console.log("Efter filter ", todos.filter((t) => t.id !== id));
     }
+*/
 
+/*
     // Sortering
     type SortBy = "priority" | "task" | "createdAt";
     const [sortBy, setSortBy] = useState<SortBy>("priority");
@@ -85,8 +127,10 @@ export const ToDoApp = () => {
 
     const activeTodos = sortedTodos.filter(todo => !todo.isDone);
     const doneTodos = sortedTodos.filter(todo => todo.isDone);
+*/
 
-    /*Developer mode**************************/
+
+    /*Developer mode************************** /
     const resetTodos = () => {
     localStorage.removeItem("todos");
     window.location.reload(); // laddar om för att återställa till hårdkodade
@@ -94,15 +138,27 @@ export const ToDoApp = () => {
     /*******************************/
 
     return (
+        <>
         <div>
-            <h1>To-Do App</h1>
+            <h1>Parent To-Do App</h1>
+            <h2>Mina To-Do's</h2>
+            <div style={{ border: "1px solid black" }}><p>Detta är en props: </p>
 
-            {/* Developer mode: knappen för att återställa till startuppgifter */}
+            <AddToDo addTodo={addToDo} />
+            <ToDoList todos={todos}/>
+        
+            <p>Hit ska knapparna och funktionerna också kopplas</p>
+
+            </div>
+{/*
+        <div style={{ border: "1px solid black" }}> <p>Detta skrivs direkt i ToDoApp.tsx. Det borde kunna bli 4a delar</p>
+            {/* Developer mode: knappen för att återställa till startuppgifter * /}
             <Button onClick={resetTodos}>🔄 Återställ till startuppgifter</Button>
 
-            <h2>Mina To-Do's</h2>
+            <SortMenu sortBy={sortBy} onChange={setSortBy} />
+*/}
+{/*
             <div>
-                <SortMenu sortBy={sortBy} onChange={setSortBy} />
                 {activeTodos.map(todo => ( 
                     <ul key={todo.id}>
                         <li>
@@ -135,10 +191,11 @@ export const ToDoApp = () => {
                     </ul>
                 ))}
             </div>
-
+*/}
+{/*
             <h4>Skapa ny To-Do</h4>
-            <form onSubmit={handleSubmit}>
-                {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
+            <form onSubmit={createToDo}>
+                {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->* /}
 
                 <div>
                     <label htmlFor ="task"> Uppgift: </label>
@@ -153,11 +210,15 @@ export const ToDoApp = () => {
                             <option key={num} value={num}>{num}</option>
                         ))}
                     </select>
-                {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
+                {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->* /}
                 </div>
 
                 <Button>Spara</Button>
             </form>
+</div>
+            */}
+            
         </div>
+        </>
     );
 }
