@@ -3,6 +3,7 @@
 import { useEffect, useState, type ChangeEvent, type FormEvent } from "react";
 import { ToDo } from "../models/ToDo";
 import { Button } from "./Button";
+import { SortMenu } from "./sortMenu";
 
 export const ToDoApp = () => {
     const [todos, setTodos] = useState<ToDo[]>(() => {
@@ -30,17 +31,17 @@ export const ToDoApp = () => {
 
     /**hanterar förändringar i inputrutan [e.target.id] kopplas till id i respektive input ruta
     Koppla sedan på handleChange på alla textrutor*/
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.type==="text"){
-            setTodo({...todo, [e.target.id]: e.target.value});
+    const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        if (e.target.type === "text") {
+            setTodo({ ...todo, [e.target.id]: e.target.value });
         }
-        if (e.target.type==="number"){
-            setTodo({...todo, [e.target.id]: +e.target.value});
+        if (e.target.type === "number" || e.target instanceof HTMLSelectElement) {
+            setTodo({ ...todo, [e.target.id]: +e.target.value });
         }
-        if (e.target.type==="checkbox"){
-            setTodo({...todo, [e.target.id]: e.target.checked});
+        if (e.target.type === "checkbox") {
+            setTodo({ ...todo, [e.target.id]: (e.target as HTMLInputElement).checked });
         }
-    }
+    }   
 
     const handleSubmit = (e: FormEvent) => {
         e.preventDefault(); //förhindra att sidan laddas om
@@ -72,6 +73,19 @@ export const ToDoApp = () => {
     }
 
 
+    
+    type SortBy = "priority" | "task" | "done" | "createdAt";
+    const [sortBy, setSortBy] = useState<SortBy>("priority");
+
+    const sortedTodos = [...todos].sort((a, b) => {
+        if (sortBy === "priority") return b.priority - a.priority;
+        if (sortBy === "task") return a.task.localeCompare(b.task);
+        if (sortBy === "done") return Number(a.isDone) - Number(b.isDone);
+        if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+        return 0;
+    });
+
+
     /*Developer mode**************************/
     const resetTodos = () => {
     localStorage.removeItem("todos");
@@ -88,7 +102,8 @@ export const ToDoApp = () => {
 
 
                 <p>Mina To-Do's</p>
-                {todos.map(todo => ( 
+                <SortMenu sortBy={sortBy} onChange={setSortBy} />
+                {sortedTodos.map(todo => ( 
                     <ul key={todo.id}>
                         <li>
                             <strong>ID:</strong> {todo.id} <br />
@@ -96,6 +111,7 @@ export const ToDoApp = () => {
                             Prioritet: {todo.priority}
                             Markera som klar: <input type="checkbox" checked={todo.isDone} onChange={() => toggleTodo(todo.id)} />
                             Status: {todo.isDone ? "✅" : "❌"}
+                            Skapad: {new Date(todo.createdAt).toLocaleString()}<br />
                             <Button onClick={() => deleteTodo(todo.id)}>Radera ToDo</Button>
                         </li>
                     </ul>
@@ -112,7 +128,12 @@ export const ToDoApp = () => {
                 
                 <div>
                     <label htmlFor ="priority"> Prioritet 1-5: </label>
-                    <input type="number" id="priority" value={todo.priority} onChange={handleChange}/>
+                    <select id="priority" value={todo.priority} onChange={handleChange}>
+                        <option value="">-- Välj prioritet --</option>
+    {[1, 2, 3, 4, 5].map(num => (
+      <option key={num} value={num}>{num}</option>
+    ))}
+  </select>
                 {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
                 </div>
 
