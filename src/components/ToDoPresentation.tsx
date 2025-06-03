@@ -17,7 +17,7 @@ export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentation
                 <li>Prioritet: {todo.priority}</li>
                 <li>Status: {todo.isDone ? "✅" : "❌"}</li>
                 <li>Skapad: {new Date(todo.createdAt).toLocaleString()}</li>
-                <li>Markera som klar: 
+                <li>{todo.isDone ? "Jag måste göra detta igen.." : "Jag är färdig!"}:
                     <input type="checkbox" checked={todo.isDone} onChange={() => onToggle(todo.id)} />
                 </li>
 
