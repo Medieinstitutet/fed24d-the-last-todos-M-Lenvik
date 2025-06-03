@@ -22,7 +22,7 @@ Sidan skall visa ett antal punkter som skall göras. Dessa skall då komma upp p
 - * Kunna sortera ordningen på dina todos.
 - Implementera ett valfritt grafiskt ramverk, t.ex. tailwind eller material ui.
 - * Ni behöver ha minst tre komponenter.
-- Ni måste använda Lifting State Up.
+- * Ni måste använda Lifting State Up.
 
 ## Allmänt
 

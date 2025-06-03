@@ -1,5 +1,4 @@
 //commponents/AddToDo.tsx
-
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { ToDo } from "../models/ToDo";
 import { Button } from "./Button";
@@ -35,31 +34,31 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
     };
 
     return (
-    <>
-        <p>Det här är AddToDo och här ska formuläret in</p>
+        <>
+            <p>Det här är AddToDo och här ska formuläret in</p>
 
-            <h4>Skapa ny To-Do</h4>
-            <form onSubmit={handleSubmit}>
-                {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
+                <h4>Skapa ny To-Do</h4>
+                <form onSubmit={handleSubmit}>
+                    {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
 
-                <div>
-                    <label htmlFor ="task"> Uppgift: </label>
-                    <input type="text" id="task" value={todo.task} onChange={handleChange}/>
-                </div>
-                
-                <div>
-                    <label htmlFor ="priority"> Prioritet 1-5: </label>
-                    <select id="priority" value={todo.priority} onChange={handleChange}>
-                        <option value="">-- Välj prioritet --</option>
-                        {[1, 2, 3, 4, 5].map(num => (
-                            <option key={num} value={num}>{num}</option>
-                        ))}
-                    </select>
-                {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
-                </div>
+                    <div>
+                        <label htmlFor ="task"> Uppgift: </label>
+                        <input type="text" id="task" value={todo.task} onChange={handleChange}/>
+                    </div>
+                    
+                    <div>
+                        <label htmlFor ="priority"> Prioritet 1-5: </label>
+                        <select id="priority" value={todo.priority} onChange={handleChange}>
+                            <option value="">-- Välj prioritet --</option>
+                            {[1, 2, 3, 4, 5].map(num => (
+                                <option key={num} value={num}>{num}</option>
+                            ))}
+                        </select>
+                    {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
+                    </div>
 
-            <Button>Spara</Button>
-        </form>
-    </>
+                <Button>Spara</Button>
+            </form>
+        </>
     );
 };
