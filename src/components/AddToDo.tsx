@@ -2,6 +2,7 @@
 
 import { useState, type ChangeEvent, type FormEvent } from "react";
 import { ToDo } from "../models/ToDo";
+import { Button } from "./Button";
 
 type AddToDoProps = {
     addTodo: (t: ToDo) => void;
@@ -10,10 +11,8 @@ type AddToDoProps = {
 export const AddToDo = ({ addTodo }: AddToDoProps) =>{
     const [todo, setTodo] = useState<ToDo>(new ToDo(0, "", 0, false));
 
-
-
-    
-
+    /**hanterar förändringar i inputrutan [e.target.id] kopplas till id i respektive input ruta
+    Koppla sedan på handleChange på alla textrutor*/
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         if (e.target.type === "text") {
             setTodo({ ...todo, [e.target.id]: e.target.value });
@@ -35,20 +34,31 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
         console.log("todo", todo);
     };
 
-
-    
     return (
     <>
         <p>Det här är AddToDo och här ska formuläret in</p>
 
-        <form onSubmit={handleSubmit }>
-            {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
-        
-            <div>
-                <label htmlFor ="task"> Uppgift: </label>
-                <input type="text" id="task" value={todo.task} onChange={handleChange}/>
-            </div>
-            <button>Spara</button>
+            <h4>Skapa ny To-Do</h4>
+            <form onSubmit={handleSubmit}>
+                {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
+
+                <div>
+                    <label htmlFor ="task"> Uppgift: </label>
+                    <input type="text" id="task" value={todo.task} onChange={handleChange}/>
+                </div>
+                
+                <div>
+                    <label htmlFor ="priority"> Prioritet 1-5: </label>
+                    <select id="priority" value={todo.priority} onChange={handleChange}>
+                        <option value="">-- Välj prioritet --</option>
+                        {[1, 2, 3, 4, 5].map(num => (
+                            <option key={num} value={num}>{num}</option>
+                        ))}
+                    </select>
+                {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
+                </div>
+
+            <Button>Spara</Button>
         </form>
     </>
     );
