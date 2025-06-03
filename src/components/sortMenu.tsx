@@ -1,7 +1,7 @@
 // components/SortMenu.tsx
 import type { ChangeEvent } from "react";
 
-type SortBy = "priority" | "task" | "done" | "createdAt";
+type SortBy = "priority" | "task" | "createdAt";
 
 interface SortMenuProps {
     sortBy: SortBy;
@@ -19,7 +19,6 @@ export const SortMenu = ({ sortBy, onChange }: SortMenuProps) => {
             <select value={sortBy} onChange={handleChange}>
                 <option value="priority">Prioritet</option>
                 <option value="task">Uppgift (A → Ö)</option>
-                <option value="done">Status (Ej klar → Klar)</option>
                 <option value="createdAt">Datum (Nyast först)</option>
             </select>
         </div>

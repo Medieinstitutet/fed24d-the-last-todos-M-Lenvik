@@ -72,19 +72,19 @@ export const ToDoApp = () => {
         console.log("Efter filter ", todos.filter((t) => t.id !== id));
     }
 
-
-    
-    type SortBy = "priority" | "task" | "done" | "createdAt";
+    // Sortering
+    type SortBy = "priority" | "task" | "createdAt";
     const [sortBy, setSortBy] = useState<SortBy>("priority");
 
     const sortedTodos = [...todos].sort((a, b) => {
         if (sortBy === "priority") return b.priority - a.priority;
         if (sortBy === "task") return a.task.localeCompare(b.task);
-        if (sortBy === "done") return Number(a.isDone) - Number(b.isDone);
         if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
         return 0;
     });
 
+    const activeTodos = sortedTodos.filter(todo => !todo.isDone);
+    const doneTodos = sortedTodos.filter(todo => todo.isDone);
 
     /*Developer mode**************************/
     const resetTodos = () => {
@@ -96,14 +96,14 @@ export const ToDoApp = () => {
     return (
         <div>
             <h1>To-Do App</h1>
+
+            {/* Developer mode: knappen för att återställa till startuppgifter */}
+            <Button onClick={resetTodos}>🔄 Återställ till startuppgifter</Button>
+
+            <h2>Mina To-Do's</h2>
             <div>
-                {/* Developer mode: knappen för att återställa till startuppgifter */}
-                <Button onClick={resetTodos}>🔄 Återställ till startuppgifter</Button>
-
-
-                <p>Mina To-Do's</p>
                 <SortMenu sortBy={sortBy} onChange={setSortBy} />
-                {sortedTodos.map(todo => ( 
+                {activeTodos.map(todo => ( 
                     <ul key={todo.id}>
                         <li>
                             <strong>ID:</strong> {todo.id} <br />
@@ -118,6 +118,25 @@ export const ToDoApp = () => {
                 ))}
             </div>
 
+            <h3>Mina avklarade To-Do's</h3>
+            <div>
+                <SortMenu sortBy={sortBy} onChange={setSortBy} />
+                {doneTodos.map(todo => ( 
+                    <ul key={todo.id}>
+                        <li>
+                            <strong>ID:</strong> {todo.id} <br />
+                            Uppgift: {todo.task}
+                            Prioritet: {todo.priority}
+                            Markera som klar: <input type="checkbox" checked={todo.isDone} onChange={() => toggleTodo(todo.id)} />
+                            Status: {todo.isDone ? "✅" : "❌"}
+                            Skapad: {new Date(todo.createdAt).toLocaleString()}<br />
+                            <Button onClick={() => deleteTodo(todo.id)}>Radera ToDo</Button>
+                        </li>
+                    </ul>
+                ))}
+            </div>
+
+            <h4>Skapa ny To-Do</h4>
             <form onSubmit={handleSubmit}>
                 {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
 
@@ -130,10 +149,10 @@ export const ToDoApp = () => {
                     <label htmlFor ="priority"> Prioritet 1-5: </label>
                     <select id="priority" value={todo.priority} onChange={handleChange}>
                         <option value="">-- Välj prioritet --</option>
-    {[1, 2, 3, 4, 5].map(num => (
-      <option key={num} value={num}>{num}</option>
-    ))}
-  </select>
+                        {[1, 2, 3, 4, 5].map(num => (
+                            <option key={num} value={num}>{num}</option>
+                        ))}
+                    </select>
                 {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
                 </div>
 
