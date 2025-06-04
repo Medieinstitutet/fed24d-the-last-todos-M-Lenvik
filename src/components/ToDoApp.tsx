@@ -83,16 +83,13 @@ export const ToDoApp = () => {
         <>
             <div>
                 <h1>To-Do App</h1>
-                <h2>Mina To-Do's</h2>
-                <div style={{ border: "1px solid black" }}>
-                    <div>
-                        <h4>Skapa ny To-Do</h4>
-                        <AddToDo addTodo={addToDo} />
-                    </div>
+                <h2 className="text-4xl font-caveat underline">Mina To-Do's</h2>
+                
+                <div className="p-4 bg-light rounded shadow bg-amber-600">
 
-                    <h3>Saker jag har att göra</h3>
                     {activeTodos.length > 0 ? (
-                        <div>
+                        <div className="border-solid border-2 border-b-cyan-800 p-4 rounded mb-8">
+                            <h3 className="text-xl font-bold text-gray-800 underline mb-4">Saker jag har att göra</h3>
                             <SortMenu sortBy={sortBy} onChange={setSortBy} />
                             <ToDoList todos={activeTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                         </div>
@@ -103,22 +100,27 @@ export const ToDoApp = () => {
                         </div>
                     )}
 
+                    <div className="border-solid border-2 border-b-cyan-800 p-4 rounded mb-8">
+                        <h4>Skapa ny To-Do</h4>
+                        <AddToDo addTodo={addToDo} />
+                    </div>
+                    
                     {showDoneTodos && (
-                        <div>
-                            <h3>Wo-ho! Detta har jag klarat av!</h3>
+                        <div className="border-solid border-2 border-b-cyan-800 p-4 rounded">
+                            <h3  className="text-xl font-bold text-gray-800 underline mb-4">Wo-ho! Detta har jag klarat av!</h3>
                             <SortMenu sortBy={sortBy} onChange={setSortBy} />
                             <ToDoList todos={doneTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                         </div>
                     )}
                     
                     {doneTodos.length > 0 && (
-                        <Button onClick={() => setShowDoneTodos(prev => !prev)}>
+                        <Button onClick={() => setShowDoneTodos(prev => !prev)}  className="bg-yellow-200 hover:bg-emerald-600">
                         {showDoneTodos ? "Dölj avklarade uppgifter" : "Visa avklarade uppgifter"}
                         </Button>
                     )}
                 </div>
 
-                <Button onClick={resetTodos}>🔄 Återställ till startuppgifter</Button>
+                <Button onClick={resetTodos}  className=" bg-red-400 hover:bg-red-500 transition-colors duration-300">🔄 Återställ till startuppgifter</Button>
             </div>
         </>
     );
