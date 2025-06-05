@@ -121,7 +121,7 @@ export const ToDoApp = () => {
                     )}
                     <Button 
                         onClick={resetTodos}  
-                        className="bg-red-400 hover:bg-red-500 transition-colors duration-300">
+                        className="bg-orange-600 hover:bg-orange-700 transition-colors duration-300">
                         Återställ till startuppgifter
                     </Button>
                 </div>

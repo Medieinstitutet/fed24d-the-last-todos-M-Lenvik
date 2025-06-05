@@ -28,14 +28,14 @@ export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentation
               <Button
                 onClick={() => onToggle(todo.id)}
                 className={`transition-colors duration-300
-                  ${todo.isDone ?  ' bg-yellow-200 hover:bg-yellow-600' : 'bg-green-300 hover:bg-yellow-600'}`}>
+                  ${todo.isDone ?  ' bg-yellow-200 hover:bg-yellow-600' : ' bg-yellow-200 hover:bg-yellow-600'}`}>
                 {todo.isDone ? `Jag måste ${todo.task} igen..` : 'Jag är färdig!'}
               </Button>
             </label>
 
               <Button
                 onClick={() => onDelete(todo.id)}
-                className="bg-red-400 hover:bg-red-500 rounded-lg transition-colors duration-300 w-fit">
+                className="bg-orange-600 hover:bg-orange-700 rounded-lg transition-colors duration-300 w-fit">
                 Ta bort
               </Button>
           </div>
