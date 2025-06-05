@@ -11,7 +11,7 @@ type ToDoPresentationProps ={
 export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentationProps) => {
   return (
     <>
-      <div className="bg-amber-300 shadow-md border rounded-xl p-4 mb-4">
+      <div className="bg-amber-300 border-4 border-amber-700 rounded-xl p-4 mb-4">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
           
           {/* Rad 1 & 2: Uppgift + Prioritet */}

@@ -83,24 +83,27 @@ export const ToDoApp = () => {
         <>
             <div className="p-0">
                 {activeTodos.length > 0 ? (
-                    <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                    <div className="bg-amber-500 border-4 border-amber-800 rounded-xl p-4 mb-10">
+
                         <h1 className="text-4xl font-caveat font-bold mb-4">Mina To-Do's</h1>
                         <SortMenu sortBy={sortBy} onChange={setSortBy} />
                         <ToDoList todos={activeTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                     </div>
                 ) : (
-                    <div className="bg-amber-300 border-solid border-2 border-b-black-800 p-20 rounded-xl mt-10 mb-20 text-4xl font-caveat font-bold">
+                    <div className="bg-amber-500 border-solid border-2 border-b-black-800 p-20 rounded-xl mt-10 mb-20 text-4xl font-caveat font-bold">
                         <p>Du har inga uppgifter!</p>
                         <p><GreetingDoneToDo /></p>
                     </div>
                 )}
 
-                <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                <div className="bg-amber-500 border-4 border-amber-800 rounded-xl p-4 mb-10">
+
                     <AddToDo addTodo={addToDo} />
                 </div>
                 
                 {showDoneTodos && (
-                    <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                    <div className="bg-amber-500 border-4 border-amber-800 rounded-xl p-4 mb-10">
+
                         <h2 className="text-4xl font-caveat font-bold mb-4">Wo-ho! <br/>Detta har jag klarat av!</h2>
                         <SortMenu sortBy={sortBy} onChange={setSortBy} />
                         <ToDoList todos={doneTodos} onToggle={toggleTodo} onDelete={deleteTodo} />

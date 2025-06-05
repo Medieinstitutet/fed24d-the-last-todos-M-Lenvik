@@ -11,7 +11,7 @@ type ToDoListProps = {
 export const ToDoList = ({todos, onDelete, onToggle}: ToDoListProps)=> {
     return ( 
         <>
-            <ul>
+            <div>
                 {todos.map(todo => (
                     <ToDoPresentation
                         key={todo.id}
@@ -20,7 +20,7 @@ export const ToDoList = ({todos, onDelete, onToggle}: ToDoListProps)=> {
                         onToggle={onToggle}
                     />
                 ))}
-            </ul>
+            </div>
         </>
     );
     //{todos.filter.map((t) => ( //Här är ett bra ställe att göra filtrerinagr och sökfuktioner
