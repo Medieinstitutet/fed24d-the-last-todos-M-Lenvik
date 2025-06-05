@@ -9,51 +9,39 @@ type ToDoPresentationProps ={
 };
 
 export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentationProps) => {
-    return (
-        <>
-<div className="bg-amber-300 shadow-md border rounded-xl p-4 mb-4">
-  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
-    
-    {/* Rad 1 & 2: Uppgift + Prioritet */}
-    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-2xl sm:text-3xl font-caveat">
-      <span>{todo.task}</span>
-      <span className="text-sm text-gray-500 font-sans mt-0">
-        (Prioritet: {todo.priority})
-      </span>
-    </div>
+  return (
+    <>
+      <div className="bg-amber-300 shadow-md border rounded-xl p-4 mb-4">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
+          
+          {/* Rad 1 & 2: Uppgift + Prioritet */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-2xl sm:text-3xl font-caveat">
+            <span>{todo.task}</span>
+            <span className="text-sm text-gray-500 font-sans mt-0">
+              (Prioritet: {todo.priority})
+            </span>
+          </div>
 
-    {/* Rad 3: Checkbox + knapp */}
-    <div className="flex flex-row items-center justify-center gap-3 flex-wrap sm:flex-nowrap">
-  <label className="flex items-center gap-2">
+          {/* Rad 3: Checkbox + knapp */}
+          <div className="flex flex-row items-center justify-center gap-3 flex-wrap sm:flex-nowrap">
+            <label className="flex items-center gap-2">
+              <Button
+                onClick={() => onToggle(todo.id)}
+                className={`transition-colors duration-300
+                  ${todo.isDone ?  ' bg-yellow-200 hover:bg-yellow-600' : 'bg-green-300 hover:bg-yellow-600'}`}>
+                {todo.isDone ? 'Jag måste göra detta igen..'  : 'Jag är färdig!'}
+              </Button>
+            </label>
 
-<Button
-  onClick={() => onToggle(todo.id)}
-  className={`transition-colors duration-300
-    ${todo.isDone ?  ' bg-yellow-200 hover:bg-yellow-600' : 'bg-green-300 hover:bg-yellow-600'}`}
->
-  {todo.isDone ? 'Jag måste göra detta igen..'  : 'Jag är färdig!'}
-</Button>
-
-  </label>
-
-  <Button
-    onClick={() => onDelete(todo.id)}
-    className="bg-red-400 hover:bg-red-500 rounded-lg transition-colors duration-300 w-fit"
-
-  >
-    Ta bort
-  </Button>
-</div>
-
-
-  </div>
-</div>
-
-        </>
-    );
-    //Detta är det som loopas ut. Inget mer än nödvändigt för todo-listan får skrivas här.
+              <Button
+                onClick={() => onDelete(todo.id)}
+                className="bg-red-400 hover:bg-red-500 rounded-lg transition-colors duration-300 w-fit">
+                Ta bort
+              </Button>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+  //Detta är det som loopas ut. Inget mer än nödvändigt för todo-listan får skrivas här.
 }
-
-
-
-

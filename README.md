@@ -20,7 +20,7 @@ Sidan skall visa ett antal punkter som skall göras. Dessa skall då komma upp p
 - * Kunna visa även klara händelser och klicka tillbaka den så att de blir oklara igen.
 - * Skapa ett formulär som tillåter att en användare skapar nya todos efterhand.
 - * Kunna sortera ordningen på dina todos.
-- Implementera ett valfritt grafiskt ramverk, t.ex. tailwind eller material ui.
+- * Implementera ett valfritt grafiskt ramverk, t.ex. tailwind eller material ui.
 - * Ni behöver ha minst tre komponenter.
 - * Ni måste använda Lifting State Up.
 

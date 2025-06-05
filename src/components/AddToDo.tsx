@@ -35,7 +35,7 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
 
     return (
         <>                                          
-                     <p className="text-4xl font-caveat font-bold mb-4">Lägg till ny uppgift</p>
+            <p className="text-4xl font-caveat font-bold mb-4">Lägg till ny uppgift</p>
             <form onSubmit={handleSubmit} className="mx-auto mt-6 p-5 bg-amber-300 border border-black rounded-md space-y-6 mb-4">
                 {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
                 <div className="flex flex-col">
@@ -59,4 +59,3 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
         </>
     );
 };
-

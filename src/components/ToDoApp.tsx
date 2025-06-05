@@ -81,55 +81,48 @@ export const ToDoApp = () => {
 
     return (
         <>
-
-                
-                <div className="p-0">
-
-                    {activeTodos.length > 0 ? (
-                        <div className="bg-amber-500 rounded-xl p-2 mb-10">
-                            <h1 className="text-4xl font-caveat font-bold mb-4">Mina To-Do's</h1>
-                            <SortMenu sortBy={sortBy} onChange={setSortBy} />
-                            <ToDoList todos={activeTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
-                        </div>
-                    ) : (
-                        <div className="bg-amber-300 border-solid border-2 border-b-black-800 p-20 rounded-xl mt-10 mb-20 text-4xl font-caveat font-bold">
-                            <p>Du har inga uppgifter!</p>
-                            <p><GreetingDoneToDo /></p>
-                        </div>
-                    )}
-
+            <div className="p-0">
+                {activeTodos.length > 0 ? (
                     <div className="bg-amber-500 rounded-xl p-2 mb-10">
-                        <AddToDo addTodo={addToDo} />
+                        <h1 className="text-4xl font-caveat font-bold mb-4">Mina To-Do's</h1>
+                        <SortMenu sortBy={sortBy} onChange={setSortBy} />
+                        <ToDoList todos={activeTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                     </div>
-                    
-                    {showDoneTodos && (
-                        <div className="bg-amber-500 rounded-xl p-2 mb-10">
-                            <h2 className="text-4xl font-caveat font-bold mb-4">Wo-ho! <br/>Detta har jag klarat av!</h2>
-                            <SortMenu sortBy={sortBy} onChange={setSortBy} />
-                            <ToDoList todos={doneTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
-                        </div>
+                ) : (
+                    <div className="bg-amber-300 border-solid border-2 border-b-black-800 p-20 rounded-xl mt-10 mb-20 text-4xl font-caveat font-bold">
+                        <p>Du har inga uppgifter!</p>
+                        <p><GreetingDoneToDo /></p>
+                    </div>
+                )}
+
+                <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                    <AddToDo addTodo={addToDo} />
+                </div>
+                
+                {showDoneTodos && (
+                    <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                        <h2 className="text-4xl font-caveat font-bold mb-4">Wo-ho! <br/>Detta har jag klarat av!</h2>
+                        <SortMenu sortBy={sortBy} onChange={setSortBy} />
+                        <ToDoList todos={doneTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
+                    </div>
+                )}
+                
+                <div className="flex flex-wrap justify-center gap-3 mb-4">
+                    {doneTodos.length > 0 && (
+                        <Button 
+                        onClick={() => setShowDoneTodos(prev => !prev)}  
+                        className="bg-yellow-200 hover:bg-yellow-600 transition-colors duration-300"
+                        >
+                        {showDoneTodos ? "Dölj avklarade uppgifter" : "Visa avklarade uppgifter"}
+                        </Button>
                     )}
-                    
-                    <div className="flex flex-wrap justify-center gap-3 mb-4">
-                        {doneTodos.length > 0 && (
-                            <Button 
-                            onClick={() => setShowDoneTodos(prev => !prev)}  
-                            className="bg-yellow-200 hover:bg-yellow-600 transition-colors duration-300"
-                            >
-                            {showDoneTodos ? "Dölj avklarade uppgifter" : "Visa avklarade uppgifter"}
-                            </Button>
-                        )}
                     <Button 
                         onClick={resetTodos}  
-                        className="bg-red-400 hover:bg-red-500 transition-colors duration-300"
-                    >
+                        className="bg-red-400 hover:bg-red-500 transition-colors duration-300">
                         Återställ till startuppgifter
                     </Button>
-
-                    </div>
                 </div>
-
-
+            </div>
         </>
     );
 }
