@@ -11,7 +11,7 @@ type ToDoListProps = {
 export const ToDoList = ({todos, onDelete, onToggle}: ToDoListProps)=> {
     return ( 
         <>
-            <ul className="border-solid border-2 border-gray-300 p-4 rounded">
+            <ul>
                 {todos.map(todo => (
                     <ToDoPresentation
                         key={todo.id}

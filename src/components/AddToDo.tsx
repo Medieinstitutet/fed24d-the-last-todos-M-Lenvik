@@ -34,17 +34,18 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
     };
 
     return (
-        <>
-            <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-6 p-5 bg-yellow-50 border-2 border-black rounded-lg shadow-[4px_4px_0_rgba(0,0,0,1)] space-y-6 font-caveat">
+        <>                                          
+                     <p className="text-4xl font-caveat font-bold mb-4">Lägg till ny uppgift</p>
+            <form onSubmit={handleSubmit} className="mx-auto mt-6 p-5 bg-amber-300 border border-black rounded-md space-y-6 mb-4">
                 {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
                 <div className="flex flex-col">
-                    <label htmlFor ="task" className="mb-1 text-2xl text-black"> Uppgift: </label>
-                    <input type="text" id="task" value={todo.task} onChange={handleChange} className="text-xl p-3 border-2 border-black rounded-md bg-white shadow-[2px_2px_0_rgba(0,0,0,1)] focus:outline-none focus:ring-2 focus:ring-amber-500"/>
+                    <span className="font-caveat font-bold"><label htmlFor ="task" className="mb-1 text-2xl text-black"> Uppgift: </label></span>
+                    <input type="text" id="task" value={todo.task} onChange={handleChange} placeholder="Ange ny uppgift" className="text-xl p-3 border-2 border-black rounded-md bg-amber-100 shadow-[2px_2px_0_rgba(0,0,0,1)] focus:outline-none focus:ring-2 focus:ring-amber-500"/>
                 </div>
                 
                 <div className="flex flex-col">
-                    <label htmlFor ="priority" className="mb-1 text-2xl text-black"> Prioritet 1-5: </label>
-                    <select id="priority" value={todo.priority} onChange={handleChange} className="text-xl p-3 border-2 border-black rounded-md bg-white shadow-[2px_2px_0_rgba(0,0,0,1)] focus:outline-none focus:ring-2 focus:ring-amber-500">
+                    <span className="font-caveat font-bold"><label htmlFor ="priority" className="mb-1 text-2xl text-black"> Prioritet 1-5: </label></span>
+                    <select id="priority" value={todo.priority} onChange={handleChange} className="text-xl p-3 border-2 border-black rounded-md bg-amber-100 shadow-[2px_2px_0_rgba(0,0,0,1)] focus:outline-none focus:ring-2 focus:ring-amber-500">
                         <option value="">-- Välj prioritet --</option>
                         {[1, 2, 3, 4, 5].map(num => (
                             <option key={num} value={num}>{num}</option>
@@ -53,7 +54,7 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
                     {/*<!-- value sätter defaultvärde från stateHook ovan [person, setPerson]-->*/}
                 </div>
 
-                <Button className="bg-yellow-200 hover:bg-emerald-600">Spara</Button>
+                <Button className="bg-yellow-200 hover:bg-yellow-600">Spara</Button>
             </form>
         </>
     );

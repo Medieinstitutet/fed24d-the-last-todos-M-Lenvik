@@ -81,47 +81,55 @@ export const ToDoApp = () => {
 
     return (
         <>
-            <div>
-                <h1>To-Do App</h1>
-                <h2 className="text-4xl font-caveat underline">Mina To-Do's</h2>
+
                 
-                <div className="p-4 bg-light rounded shadow bg-amber-600">
+                <div className="p-0">
 
                     {activeTodos.length > 0 ? (
-                        <div className="border-solid border-2 border-b-cyan-800 p-4 rounded mb-8">
-                            <h3 className="text-xl font-bold text-gray-800 underline mb-4">Saker jag har att göra</h3>
+                        <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                            <h1 className="text-4xl font-caveat font-bold mb-4">Mina To-Do's</h1>
                             <SortMenu sortBy={sortBy} onChange={setSortBy} />
                             <ToDoList todos={activeTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                         </div>
                     ) : (
-                        <div>
-                            <p>Du har inga uppgifter! ✨ </p>
+                        <div className="bg-amber-300 border-solid border-2 border-b-black-800 p-20 rounded-xl mt-10 mb-20 text-4xl font-caveat font-bold">
+                            <p>Du har inga uppgifter!</p>
                             <p><GreetingDoneToDo /></p>
                         </div>
                     )}
 
-                    <div className="border-solid border-2 border-b-cyan-800 p-4 rounded mb-8">
-                        <h4>Skapa ny To-Do</h4>
+                    <div className="bg-amber-500 rounded-xl p-2 mb-10">
                         <AddToDo addTodo={addToDo} />
                     </div>
                     
                     {showDoneTodos && (
-                        <div className="border-solid border-2 border-b-cyan-800 p-4 rounded">
-                            <h3  className="text-xl font-bold text-gray-800 underline mb-4">Wo-ho! Detta har jag klarat av!</h3>
+                        <div className="bg-amber-500 rounded-xl p-2 mb-10">
+                            <h2 className="text-4xl font-caveat font-bold mb-4">Wo-ho! <br/>Detta har jag klarat av!</h2>
                             <SortMenu sortBy={sortBy} onChange={setSortBy} />
                             <ToDoList todos={doneTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                         </div>
                     )}
                     
-                    {doneTodos.length > 0 && (
-                        <Button onClick={() => setShowDoneTodos(prev => !prev)}  className="bg-yellow-200 hover:bg-emerald-600">
-                        {showDoneTodos ? "Dölj avklarade uppgifter" : "Visa avklarade uppgifter"}
-                        </Button>
-                    )}
+                    <div className="flex flex-wrap justify-center gap-3 mb-4">
+                        {doneTodos.length > 0 && (
+                            <Button 
+                            onClick={() => setShowDoneTodos(prev => !prev)}  
+                            className="bg-yellow-200 hover:bg-yellow-600 transition-colors duration-300"
+                            >
+                            {showDoneTodos ? "Dölj avklarade uppgifter" : "Visa avklarade uppgifter"}
+                            </Button>
+                        )}
+                    <Button 
+                        onClick={resetTodos}  
+                        className="bg-red-400 hover:bg-red-500 transition-colors duration-300"
+                    >
+                        Återställ till startuppgifter
+                    </Button>
+
+                    </div>
                 </div>
 
-                <Button onClick={resetTodos}  className=" bg-red-400 hover:bg-red-500 transition-colors duration-300">🔄 Återställ till startuppgifter</Button>
-            </div>
+
         </>
     );
 }

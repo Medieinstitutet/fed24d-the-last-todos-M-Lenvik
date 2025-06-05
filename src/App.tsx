@@ -3,7 +3,7 @@ import { ToDoApp } from "./components/ToDoApp";
 
 function App() {
   return <>
-  <div className="w-[75%] max-w-screen-lg mx-auto p-4 bg-amber-500">
+  <div className="max-w-screen-lg mx-auto p-3 bg-amber-400">
 
     <ToDoApp/>
   </div>

@@ -11,67 +11,49 @@ type ToDoPresentationProps ={
 export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentationProps) => {
     return (
         <>
-<ul className="bg-white shadow-md border border-amber-200 rounded-xl p-6 space-y-2 mb-4">
-  {/* Uppgift */}
-  <li className="text-center">
-    <span className="text-4xl font-caveat">{todo.task} 
-        
-        <span className="ml-1 text-sm text-gray-500 font-sans"> (Prioritet: {todo.priority})</span>
-        </span>
-  </li>
-
-  {/* Box med två kolumner */}
-  <li className="flex flex-col sm:flex-row justify-between gap-4 bg-amber-50 p-2 rounded-lg">
+<div className="bg-amber-300 shadow-md border rounded-xl p-4 mb-4">
+  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
     
-    {/* Vänstersida */}
-    <div className="flex-1 space-y-1">
-
-      <div>
-        <div className="text-sm text-gray-500">Skapad:</div>
-        <span className="ml-1 text-base text-gray-700">
-            {new Date(todo.createdAt).toLocaleDateString("sv-SE", {
-                year: "numeric",
-                month: "long",
-                day: "numeric"
-            })}
-        </span>
-      </div>
-
+    {/* Rad 1 & 2: Uppgift + Prioritet */}
+    <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-2xl sm:text-3xl font-caveat">
+      <span>{todo.task}</span>
+      <span className="text-sm text-gray-500 font-sans mt-0">
+        (Prioritet: {todo.priority})
+      </span>
     </div>
 
-    {/* Högersida */}
-    <div className="flex-1 flex flex-col items-end justify-center space-y-1">
-    <span className="text-lg text-right">
-        {todo.isDone ? "✅ Färdig" : "❌ Ej klar"}
-    </span>
-    
-    </div>
-  </li>
+    {/* Rad 3: Checkbox + knapp */}
+    <div className="flex flex-row items-center justify-center gap-3 flex-wrap sm:flex-nowrap">
+  <label className="flex items-center gap-2">
+
+<Button
+  onClick={() => onToggle(todo.id)}
+  className={`transition-colors duration-300
+    ${todo.isDone ?  ' bg-yellow-200 hover:bg-yellow-600' : 'bg-green-300 hover:bg-yellow-600'}`}
+>
+  {todo.isDone ? 'Jag måste göra detta igen..'  : 'Jag är färdig!'}
+</Button>
+
+  </label>
+
+  <Button
+    onClick={() => onDelete(todo.id)}
+    className="bg-red-400 hover:bg-red-500 rounded-lg transition-colors duration-300 w-fit"
+
+  >
+    Ta bort
+  </Button>
+</div>
 
 
+  </div>
+</div>
 
-
-<li>
-    <div className="flex items-center justify-around flex-wrap gap-3">
-      <div className="flex items-center gap-2">
-        <input
-          type="checkbox"
-          checked={todo.isDone}
-          onChange={() => onToggle(todo.id)}
-          className="w-5 h-5 accent-amber-500"
-        />
-        
-        <span className="text-sm text-gray-500">
-          {todo.isDone ? "Jag måste göra detta igen.." : "Jag är färdig!"}
-        </span>
-      </div>
-
-      <Button onClick={() => onDelete(todo.id)} className="bg-red-400 hover:bg-red-500 transition-colors duration-300">Ta bort</Button>
-    </div>
-  </li>
-
-</ul>
         </>
     );
     //Detta är det som loopas ut. Inget mer än nödvändigt för todo-listan får skrivas här.
 }
+
+
+
+
