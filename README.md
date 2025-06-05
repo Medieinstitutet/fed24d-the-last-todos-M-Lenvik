@@ -8,6 +8,17 @@ Skapad av **Marie Lenvik** <br> https://github.com/M-Lenvik
 
 ## Innehållsförteckning
 
+1. [Beskrivning av sidan](#-beskrivning-av-sidan--todo-app-i-react)
+2. [Kom igång med projektet](#kom-igång-med-projektet)
+   1. [Installera genom följande](#installera genom följande:)
+3. [Tekniker som använts](#tekniker-som-använts)
+4. [Uppgiftsbeskrivning](#uppgiftsbeskrivning)
+   1. [Uppgiftskrav på G-nivå](#uppgiftskrav-på-g-nivå)
+   2. [Uppgiftskrav på VG-nivå](#uppgiftskrav-på-vg-nivå)
+5. [Bilder](#bilder)
+6.  [ToDo Appen] (#todo-appen)
+7. [Slutbetyg](#slutbetyg)
+
 ## 🔍 Beskrivning av sidan 📚 ToDo App i React
 
 Sidan skall visa ett antal ToDo-punkter. Dessa visas på skärmen som en lista. När man gjort en ToDo kan användaren markera uppgiften som slutförd och uppgiften tas då bort från listan med aktiva ToDo's.
