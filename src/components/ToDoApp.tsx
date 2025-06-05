@@ -5,7 +5,7 @@ import { ToDoList } from "./ToDoList";
 import { AddToDo } from "./AddToDo";
 import { SortMenu } from "./sortMenu";
 import { Button } from "./Button";
-import { GreetingDoneToDo } from "./greetingDoneTodo";
+import { GreetingDoneToDo } from "./GreetingDoneTodo";
 
 export const ToDoApp = () => {
     const [todos, setTodos] = useState<ToDo[]>(() => {
