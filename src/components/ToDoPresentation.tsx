@@ -17,7 +17,7 @@ export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentation
           {/* Rad 1 & 2: Uppgift + Prioritet */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:gap-2 text-2xl sm:text-3xl font-caveat">
             <span>{todo.task}</span>
-            <span className="text-sm text-gray-500 font-sans mt-0">
+            <span className="text-sm text-gray-900 font-sans mt-0">
               (Prioritet: {todo.priority})
             </span>
           </div>
@@ -29,7 +29,7 @@ export const ToDoPresentation = ({ todo,  onDelete, onToggle }: ToDoPresentation
                 onClick={() => onToggle(todo.id)}
                 className={`transition-colors duration-300
                   ${todo.isDone ?  ' bg-yellow-200 hover:bg-yellow-600' : 'bg-green-300 hover:bg-yellow-600'}`}>
-                {todo.isDone ? 'Jag måste göra detta igen..'  : 'Jag är färdig!'}
+                {todo.isDone ? `Jag måste ${todo.task} igen..` : 'Jag är färdig!'}
               </Button>
             </label>
 

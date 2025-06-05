@@ -16,10 +16,10 @@ export const ToDoApp = () => {
         }
 
         return ([
-            new ToDo(1, "Plugga", 5, true),
+            new ToDo(1, "Plugga", 2, false),
             new ToDo(2, "Träna", 4, false),
-            new ToDo(3, "Gör React uppgiften", 4, false),
-            new ToDo(4, "Jobba", 3, true),
+            new ToDo(3, "Gör React uppgiften", 1, false),
+            new ToDo(4, "Jobba", 3, false),
         ]);
 
         
@@ -61,7 +61,7 @@ export const ToDoApp = () => {
     // Sortering
     type SortBy = "priority" | "task" | "createdAt";
     const [sortBy, setSortBy] = useState<SortBy>("priority");
-    const sortedTodos = [...todos].sort((a, b) => {
+    const sortedTodos = [...todos].sort((b, a) => {
         if (sortBy === "priority") return b.priority - a.priority;
         if (sortBy === "task") return a.task.localeCompare(b.task);
         if (sortBy === "createdAt") return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
@@ -90,7 +90,7 @@ export const ToDoApp = () => {
                         <ToDoList todos={activeTodos} onToggle={toggleTodo} onDelete={deleteTodo} />
                     </div>
                 ) : (
-                    <div className="bg-amber-500 border-solid border-2 border-b-black-800 p-20 rounded-xl mt-10 mb-20 text-4xl font-caveat font-bold">
+                    <div className="bg-amber-500 border-4 border-amber-800 rounded-xl p-20 mt-10 mb-20 text-4xl font-caveat font-bold">
                         <p>Du har inga uppgifter!</p>
                         <p><GreetingDoneToDo /></p>
                     </div>

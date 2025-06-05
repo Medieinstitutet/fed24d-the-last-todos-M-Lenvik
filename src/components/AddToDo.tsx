@@ -39,7 +39,7 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
             <form onSubmit={handleSubmit} className="bg-amber-300 border-4 border-amber-700 rounded-xl p-4 mb-4" aria-label="Lägg till uppgift">
                 {/*<!-- htmlFor för att texten Uppgift gör tillhörnade textruta i fokus-->*/}
                 <div className="flex flex-col">
-                    <label htmlFor ="task" className="font-caveat font-bol dmb-1 text-2xl text-black"> Uppgift: </label>
+                    <label htmlFor ="task" className="font-caveat font-bold dmb-1 text-2xl text-black"> Uppgift: </label>
                     <input type="text" id="task" name="task" value={todo.task} 
                     onChange={handleChange} 
                     placeholder="Ange ny uppgift" 
@@ -49,7 +49,7 @@ export const AddToDo = ({ addTodo }: AddToDoProps) =>{
                 </div>
                 
                 <div className="flex flex-col">
-                    <label htmlFor ="priority" className="font-caveat font-bold mb-1 text-2xl text-black"> Prioritet 1-5: </label>
+                    <label htmlFor ="priority" className="font-caveat font-bold mb-1 text-2xl text-black"> Prioritet (1-5): </label>
                     <select id="priority" name="priority" value={todo.priority} 
                     onChange={handleChange} 
                     className="text-xl p-3 border-2 border-black rounded-md bg-amber-100 shadow-[2px_2px_0_rgba(0,0,0,1)] focus:outline-none focus:ring-2 focus:ring-amber-500"
