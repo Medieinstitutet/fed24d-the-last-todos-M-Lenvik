@@ -87,8 +87,8 @@ Sidan skall visa ett antal ToDo-punkter. Dessa visas på skärmen som en lista. 
 <summary><strong>Skärmdumpar från webbplatsen</strong></summary>
 
 #### ToDo Appen
-![ToDo app med aktiva ToDo's](ToDo_1.png)
-![ToDo app där ToDo's är avklarade](ToDo_2.png) 
+![ToDo app med aktiva ToDo's](ToDo_2-1.png) 
+![ToDo app där ToDo's är avklarade](ToDo_1-1.png)
 </details>
 
 
