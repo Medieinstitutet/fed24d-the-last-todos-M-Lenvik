@@ -50,11 +50,7 @@ för att köra projektet.
 
 
 ## 🏆 **Betyg: VG**
-📌 **Motivering:** Studentens arbete uppfyller inte bara kraven för betyget G, utan uppfyller också samtliga kriterier för betyget VG. Projektet har en hårdkodad lista med todos som kan presenteras, hanteras och markeras som klar. Dessutom tillåter applikationen användare att skapa nya todos och hantera dem med möjlighet att sortera och ändra status. State lifting används för state management, Tailwind CSS används för styling, vilket visar på god förståelse för både kodstruktur och moderna verktyg.
+📌 **Motivering:** Studentens implementation av Todo-appen uppfyller både G och VG-kraven. Applikationen har en hårdkodad lista med saker att göra och visar dessa i en kontrollerad listaöver dem i en HTML-struktur. Klickhändelsehantering är implementerad för att markera Todo-uppgifterna som klara och därmed hantera deras borttagning. Funktionalitet för att hantera och visa avklarade uppgifter finns också, och de kan återställas till oklarade igen. Formulär finns för att skapa nya Todos och komponentlösningen är förbättrad genom "Lifting State Up" och användning av grafiskt ramverk TailwindCSS. Komponenten använder även flexbox och grid på ett strukturerat sätt. Koden är generellt välorganiserad och strukturerad.
 
 💡 **Förbättringsförslag:**  
-Även om applikationen redan är robust, kan följande förbättringar övervägas: 
-1. Förbättra UX genom fler transitions och animationer, exempelvis vid borttagning av en todo.
-2. Lägg till felhantering för användarinmatning i formuläret så att användaren informeras om fel.
-3. Implementera möjligheten att redigera befintliga todos.
-4. Små ändringar i kodstil, som att undvika onödiga kommentarer om uppenbara delar av koden vilket gör koden renare och lättare att läsa. 5. Bättre hantering av default-case i sorteringslogiken i sortedTodos konstanten för att säkerställa att oförutsedda sorteringskriterier inte orsakar problem.
+Fortsätt förbättra komponentstruktur och tillståndshantering där det behövs för framtida funktioner eller användningsfall. För felsökning och utveckling kan det vara användbart att lägga till mer detaljerade loggmeddelanden, samt att möjligen överväga att använda TypeScript mer konsekvent exempelvis med fler snäva typer för att förbättra typen säkerhetskontroller. För ännu bättre användarupplevelser kan fler animationer och övergångar läggas till. Testning kan också utökas, till exempel med enhetstester för att säkerställa beständighet och stabilitet av funktionaliteten under ökad skalbarhet.
