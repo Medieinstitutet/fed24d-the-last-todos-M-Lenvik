@@ -1,56 +1,109 @@
 # 📌 Rättningsrapport – fed24d-the-last-todos-M-Lenvik
 
 ## 🎯 Uppgiftens Krav:
-# Inlämningsuppgift Todo
+# Kurs: Javascript ramverk - React
 
-I denna inlämningsuppgift kommer ni att skapa er egen todo-lista i en react-applikation.
-Sidan skall visa ett antal punkter som skall göras. Dessa skall då komma upp på skärmen i form av en lista. När uppgiften är slutförd skall användaren kunna markera uppgiften som slutförd och uppgiften skall då tas bort från listan.
+## Utbildning till Frontend developer på Medieinstitutet
 
-## Betyg G
+Detta är första gången jag arbetar med React och Tailwind. Se uppgiftsbeskrivning nedan.
 
-- Skapa en hårdkodad lista med punkter att göra (hitta på egna punkter, dessa skall inte bara vara en text)
-- Presentera listan på skärmen, helst med lite kontroll. Detta betyder i en html-struktur t.ex. i en ul/li-lista
-- Implementera klickhändelse för att hantera borttagandet av en todo.
-- Todo markeras som klar/tas bort från skärmen och markeras som klar i javascript-listan.
+Skapad av **Marie Lenvik** <br> https://github.com/M-Lenvik
 
-## Betyg VG
+## Innehållsförteckning
 
-- Alla punkter under G
-- Kunna visa även klara händelser och klicka tillbaka den så att de blir oklara igen.
-- Skapa ett formulär som tillåter att en användare skapar nya todos efterhand.
-- Använda lifting state up för att dela upp dina komponenter bättre.
-- Kunna sortera ordningen på dina todos.
-- Implementera ett valfritt grafiskt ramverk till din todolista, t.ex. material ui eller tailwind.
-- Egen css får gärna skrivas och då skall ni ha en bra struktur och använda flex eller grid på ett bra sätt.
+1. [Beskrivning av sidan](#-beskrivning-av-sidan--todo-app-i-react)
+2. [Kom igång med projektet](#kom-igång-med-projektet)
+   1. [Installera genom följande](#installera genom följande:)
+3. [Tekniker som använts](#tekniker-som-använts)
+4. [Uppgiftsbeskrivning](#uppgiftsbeskrivning)
+   1. [Uppgiftskrav på G-nivå](#uppgiftskrav-på-g-nivå)
+   2. [Uppgiftskrav på VG-nivå](#uppgiftskrav-på-vg-nivå)
+5. [Bilder](#bilder)
+6.  [ToDo Appen] (#todo-appen)
+7. [Slutbetyg](#slutbetyg)
 
-## Allmänt
+## 🔍 Beskrivning av sidan 📚 ToDo App i React
 
-Projektet ni har är ett vite-projekt. D.v.s. ni måste köra:
+Sidan skall visa ett antal ToDo-punkter. Dessa visas på skärmen som en lista. När man gjort en ToDo kan användaren markera uppgiften som slutförd och uppgiften tas då bort från listan med aktiva ToDo's.
+
+## Kom igång med projektet
+
+**🛠️ Installera genom följande:**
+
+1. Kloning av projektet
+(https://github.com/Medieinstitutet/fed24d-the-last-todos-M-Lenvik)
+- git clone [repo-url]
+- cd [projektmapp]
+
+2. Installera alla beroenden
+Kör följande kommando för att installera alla nödvändiga paket enligt package.json:
+Projektet är ett vite-projekt. D.v.s. du måste köra:
 
 ```shell
 npm i
 ```
 
-och
+3. Starta localhost 
+Projektet kör nu lokalt på localhost:5173, beroende på inställningar. Navigera till projektets rotmapp (cd fed24d-the-last-todos-M-Lenvik) och kör npm run dev.
+
+💡 Tips: Se till att du har Node.js och npm installerat innan du börjar.
 
 ```shell
-npm run dev 
+npm run dev
 ```
 
-för att köra projektet.
+## Tekniker som använts
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) <br>
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white) <br>
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) <br>
+![Vite](https://img.shields.io/badge/vite-%23646CFF.svg?style=for-the-badge&logo=vite&logoColor=white) <br>
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white) <br>
+![NPM](https://img.shields.io/badge/NPM-%23CB3837.svg?style=for-the-badge&logo=npm&logoColor=white)
 
-- Det finns många sätt att lösa denna uppgift på. Om ni känner er osäkra på någonting, fråga hellre någon gång för mycket så att ni känner er säkra på vad ni utvecklar.
-- Ni får gärna ändra strukturen i projektet, detta är bara en grund.
-- Börja med att planera ert arbete, börja inte med Visual Studio Code, även om det är lockande.
-- Gör ert bästa att inte stressa. Lättare sagt än gjort, jag vet. Men ingen mår bättre av att stressa.
-- Ha roligt, skratta när det blir fel och fortsätt att vara nyfiken :)
+
+## Uppgiftsbeskrivning
+Sidan skall visa ett antal ToDo-punkter. Dessa visas på skärmen som en lista. När man gjort en ToDo kan användaren markera uppgiften som slutförd och uppgiften tas då bort från listan med aktiva ToDo's.
+
+**Uppgiftskrav på G-nivå** <br>
+- Skapa en hårdkodad lista med punkter att göra (hitta på egna punkter, dessa skall inte bara vara en text)
+- Presentera listan på skärmen, helst med lite kontroll. Detta betyder i en html-struktur t.ex. i en ul/li-lista
+- Implementera klickhändelse för att hantera borttagandet av en todo.
+- Todo markeras som klar på skärmen och markeras som klar i javascript-listan.
+- Ni behöver använda localStorage så att listan inte börjar om från början varje gång sidan används.
+- Ni behöver använda er av en komponent.
+- Ni behöver använda er av state med en lista med objekt.
+
+
+**Uppgiftskrav på VG-nivå** <br>
+- Alla punkter under G
+- Kunna visa även klara händelser och klicka tillbaka den så att de blir oklara igen.
+- Skapa ett formulär som tillåter att en användare skapar nya todos efterhand.
+- Kunna sortera ordningen på dina todos.
+- Implementera ett valfritt grafiskt ramverk, t.ex. tailwind eller material ui.
+- Ni behöver ha minst tre komponenter.
+- Ni måste använda Lifting State Up.
+
+### Bilder
+  - Bilder på den färdiga webbplatsen
+
+<details>
+<summary><strong>Skärmdumpar från webbplatsen</strong></summary>
+
+#### ToDo Appen
+![ToDo app med aktiva ToDo's](ToDo_2-1.png) 
+![ToDo app där ToDo's är avklarade](ToDo_1-1.png)
+</details>
+
+
+## Slutbetyg
+Betyg har ännu ej getts.
 
 
 ## 🔍 ESLint-varningar:
 
 
 ## 🏆 **Betyg: VG**
-📌 **Motivering:** Studentens implementation av Todo-appen uppfyller både G och VG-kraven. Applikationen har en hårdkodad lista med saker att göra och visar dessa i en kontrollerad listaöver dem i en HTML-struktur. Klickhändelsehantering är implementerad för att markera Todo-uppgifterna som klara och därmed hantera deras borttagning. Funktionalitet för att hantera och visa avklarade uppgifter finns också, och de kan återställas till oklarade igen. Formulär finns för att skapa nya Todos och komponentlösningen är förbättrad genom "Lifting State Up" och användning av grafiskt ramverk TailwindCSS. Komponenten använder även flexbox och grid på ett strukturerat sätt. Koden är generellt välorganiserad och strukturerad.
+📌 **Motivering:** Koden uppfyller alla krav för både G- och VG-nivån. Funktionaliteten inkluderar skapande, markering och borttagning av ToDos. Prototypens arkitektur visar på en god förståelse för React-koncept som komponenter och 'Lifting State Up'. Appen använder sig framgångsrikt av TailwindCSS för styling. Kodens läsbarhet är bra, med tydliga kommentarer och koncist kodstil. Ytterligare funktioner som sortering och återställning av listan visar på ett extra engagemang för att bygga en komplett applikation.
 
 💡 **Förbättringsförslag:**  
-Fortsätt förbättra komponentstruktur och tillståndshantering där det behövs för framtida funktioner eller användningsfall. För felsökning och utveckling kan det vara användbart att lägga till mer detaljerade loggmeddelanden, samt att möjligen överväga att använda TypeScript mer konsekvent exempelvis med fler snäva typer för att förbättra typen säkerhetskontroller. För ännu bättre användarupplevelser kan fler animationer och övergångar läggas till. Testning kan också utökas, till exempel med enhetstester för att säkerställa beständighet och stabilitet av funktionaliteten under ökad skalbarhet.
+För att göra applikationen ännu mer robust och skalbar kan utvecklaren överväga att lägga till fler unit-tester för att säkerställa att förändringar inte oavsiktligt bryter funktionalitet. Det skulle också vara fördelaktigt att överväga mer avancerad felhantering, särskilt i de delar av koden som interagerar med localStorage och annan I/O. Vidare skulle det vara bra att bryta ut komponenterna ännu mer för att förbättra återanvändbarhet, till exempel separera logik och renderingsdelar i olika komponenter.
